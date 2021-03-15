@@ -11,9 +11,10 @@
       clearable
       hide-details
     ></v-text-field>
-    <v-radio-group v-model="position">
+    <v-radio-group v-model="position" row>
       <v-radio :label="$t('defender')" value="defender"></v-radio>
       <v-radio :label="$t('attacker')" value="attacker"></v-radio>
+      <v-radio :label="$t('versatile')" value="versatile"></v-radio>
     </v-radio-group>
     <v-btn @click="add()">{{ $t("add") }}</v-btn>
   </v-form>

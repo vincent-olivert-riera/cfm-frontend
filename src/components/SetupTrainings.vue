@@ -54,7 +54,7 @@
     methods: {
       getCandidates(position, day, hour) {
         const availablePlayers = this.$store.state.players.filter(player => {
-          return player.position === position && player.availability[day].hours.includes(hour)
+          return ((player.position === position || player.position === "versatile") && player.availability[day].hours.includes(hour));
         });
         
         return availablePlayers.map(player => player.name);
