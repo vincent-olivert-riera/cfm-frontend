@@ -60,15 +60,22 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "SetupTrainings",
 
+  computed: {
+    ...mapState(["players"]),
+  },
+
   methods: {
     getCandidates(position, day, hour) {
-      const availablePlayers = this.$store.state.players.filter(player => {
+      const availablePlayers = this.players.filter(player => {
         return (
-          (player.position === position || player.position === "versatile") &&
-          player.availability[day].hours.includes(hour)
+          (player.position.toLowerCase() === position ||
+            player.position.toLowerCase() === "versatile") &&
+          player.availability[day].includes(hour)
         );
       });
 
